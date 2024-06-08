@@ -1,5 +1,7 @@
 package models;
+
 import java.util.ArrayList;
+import java.util.Collections;
 
 import interfaces.Mostrable;
 
@@ -17,27 +19,13 @@ public class SuperBarrio implements Mostrable {
 
 	}
 
-	private String buscarProdMasCaro() {
+	private Producto buscarProdMasCaro() {
 
-		Producto producto = productos.get(0);
-
-		for (Producto aux : productos) {
-			if (aux.getPrecio() > producto.getPrecio()) {
-				producto = aux;
-			}
-		}
-		return producto.getNombreProducto();
+		return Collections.max(productos);
 	}
 
-	private String buscarProdMasBarato() {
-		Producto producto = productos.get(0);
-
-		for (Producto aux : productos) {
-			if (aux.getPrecio() < producto.getPrecio()) {
-				producto = aux;
-			}
-		}
-		return producto.getNombreProducto();
+	private Producto buscarProdMasBarato() {
+		return Collections.min(productos);
 	}
 
 	@Override
@@ -48,8 +36,7 @@ public class SuperBarrio implements Mostrable {
 		System.out.println("=============================");
 		System.out.println("Producto más caro: " + buscarProdMasCaro());
 		System.out.println("Producto más barato: " + buscarProdMasBarato());
-		
+
 	}
 
-	
 }
